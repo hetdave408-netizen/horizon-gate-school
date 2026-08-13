@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin · Horizon Gate School</title>
+<style>
+  :root{ --navy:#0F1A33; --gold:#C89B3C; --ivory:#F6F3EC; }
+  *{box-sizing:border-box;}
+  body{ font-family: ui-sans-serif, system-ui, sans-serif; background:var(--ivory); margin:0; color:#23262B; }
+  header{ background:var(--navy); color:#fff; padding:1.25rem 1.75rem; display:flex; align-items:center; justify-content:space-between; }
+  header h1{ font-size:1.05rem; margin:0; font-weight:600; }
+  main{ max-width:1200px; margin:0 auto; padding:2rem 1.5rem; }
+  .gate{ max-width:360px; margin:4rem auto; background:#fff; border:1px solid rgba(15,26,51,.1); padding:2rem; border-radius:4px; }
+  .gate input{ width:100%; padding:.7rem .9rem; border:1px solid rgba(15,26,51,.2); border-radius:3px; margin:.75rem 0; font-size:.9rem; }
+  .gate button, .tabbtn, .primary-btn{ background:var(--gold); color:var(--navy); border:none; padding:.65rem 1.1rem; border-radius:3px; font-weight:600; cursor:pointer; font-size:.85rem; }
+  .tabs{ display:flex; gap:.5rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+  .tabbtn.inactive{ background:transparent; border:1px solid rgba(15,26,51,.2); color:var(--navy); }
+  table{ width:100%; border-collapse:collapse; background:#fff; font-size:.83rem; }
+  th, td{ text-align:left; padding:.6rem .7rem; border-bottom:1px solid rgba(15,26,51,.08); vertical-align:top; }
+  th{ background:#fbfaf6; font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; color:#6b6b6b; }
+  .hidden{ display:none; }
+  .muted{ color:#8a8a8a; font-size:.8rem; }
+  .error{ color:#c0392b; font-size:.85rem; margin-top:.5rem; }
+  .panel{ background:#fff; border:1px solid rgba(15,26,51,.1); border-radius:4px; padding:1.5rem; margin-bottom:1.5rem; }
+  .panel h3{ margin-top:0; font-size:.95rem; }
+  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:.9rem; }
+  .form-grid label{ font-size:.72rem; letter-spacing:.03em; text-transform:uppercase; color:#8a8a8a; display:block; margin-bottom:.3rem; }
+  .form-grid input, .form-grid select, .form-grid textarea{ width:100%; padding:.55rem .7rem; border:1px solid rgba(15,26,51,.2); border-radius:3px; font-size:.85rem; font-family:inherit; }
+  .form-grid .full{ grid-column:1 / -1; }
+  .row-actions{ display:flex; gap:.5rem; }
+  .link-btn{ background:none; border:none; color:#0F1A33; text-decoration:underline; cursor:pointer; font-size:.78rem; padding:0; }
+  .link-btn.danger{ color:#c0392b; }
+  .thumb{ width:52px; height:38px; object-fit:cover; border-radius:2px; }
+  .badge{ display:inline-block; padding:.15rem .5rem; border-radius:20px; font-size:.68rem; background:#f0ece0; color:#6b5a2a; }
+  .save-msg{ font-size:.78rem; margin-top:.5rem; }
+  .save-msg.ok{ color:#2e7d4f; }
+  .save-msg.err{ color:#c0392b; }
+</style>
+</head>
+<body>
+
+<div id="gate" class="gate">
+  <h2 style="margin-top:0;">Admin sign-in</h2>
+  <p class="muted">Shared admin password — set via <code>ADMIN_PASSWORD</code> in your environment variables.</p>
+  <input id="pw" type="password" placeholder="Admin password">
+  <button id="signin">View dashboard</button>
+  <p id="gate-error" class="error hidden">Incorrect password.</p>
+</div>
+
+<div id="dashboard" class="hidden">
+  <header>
+    <h1>Horizon Gate — Admin</h1>
+    <button id="signout" class="tabbtn inactive" style="color:#fff;border-color:rgba(255,255,255,.3)">Sign out</button>
+  </header>
+  <main>
+    <div class="tabs">
+      <button class="tabbtn" data-tab="visits">Visit Requests</button>
+      <button class="tabbtn inactive" data-tab="inquiries">Admission Enquiries</button>
+      <button class="tabbtn inactive" data-tab="news">News &amp; Events</button>
+      <button class="tabbtn inactive" data-tab="gallery">Gallery</button>
+    </div>
+
+    <div id="tab-visits">
+      <table>
+        <thead><tr><th>Date</th><th>Slot</th><th>Parent</th><th>Student</th><th>Grade</th><th>Mobile</th><th>Email</th><th>Visitors</th><th>Status</th></tr></thead>
+        <tbody id="visits-body"><tr><td colspan="9" class="muted">Loading…</td></tr></tbody>
+      </table>
+    </div>
+
+    <div id="tab-inquiries" class="hidden">
+      <table>
+        <thead><tr><th>Received</th><th>Parent</th><th>Grade</th><th>Mobile</th><th>Email</th><th>Message</th><th>Status</th></tr></thead>
+        <tbody id="inquiries-body"><tr><td colspan="7" class="muted">Loading…</td></tr></tbody>
+      </table>
+    </div>
+
+    <div id="tab-news" class="hidden">
+      <div class="panel">
+        <h3 id="news-form-title">Add news / event</h3>
+        <form id="news-form">
+          <input type="hidden" id="news-id">
+          <div class="form-grid">
+            <div class="full"><label>Title</label><input id="news-title" required></div>
+            <div><label>Category</label>
+              <select id="news-category" required>
+                <option>News</option><option>Announcement</option><option>Event</option><option>Competition</option><option>Celebration</option>
+              </select>
+            </div>
+            <div><label>Date</label><input id="news-date" type="date" required></div>
+            <div class="full"><label>Excerpt</label><textarea id="news-excerpt" rows="2"></textarea></div>
+            <div class="full"><label>Image URL</label><input id="news-image" placeholder="https://…"></div>
+            <div><label><input type="checkbox" id="news-published" checked style="width:auto;display:inline-block;margin-right:.4rem;">Published</label></div>
+          </div>
+          <div style="margin-top:1rem; display:flex; gap:.6rem; align-items:center;">
+            <button type="submit" class="primary-btn">Save</button>
+            <button type="button" id="news-cancel" class="tabbtn inactive hidden">Cancel edit</button>
+            <span id="news-save-msg" class="save-msg"></span>
+          </div>
+        </form>
+      </div>
+      <table>
+        <thead><tr><th>Date</th><th>Category</th><th>Title</th><th>Published</th><th></th></tr></thead>
+        <tbody id="news-body"><tr><td colspan="5" class="muted">Loading…</td></tr></tbody>
+      </table>
+    </div>
+
+    <div id="tab-gallery" class="hidden">
+      <div class="panel">
+        <h3 id="gallery-form-title">Add gallery item</h3>
+        <form id="gallery-form">
+          <input type="hidden" id="gallery-id">
+          <div class="form-grid">
+            <div class="full"><label>Caption</label><input id="gallery-caption" required></div>
+            <div><label>Category</label>
+              <select id="gallery-category" required>
+                <option value="annual-function">Annual Function</option>
+                <option value="sports-day">Sports Day</option>
+                <option value="campus-life">Campus Life</option>
+                <option value="classrooms">Classrooms</option>
+                <option value="cultural">Cultural</option>
+              </select>
+            </div>
+            <div><label><input type="checkbox" id="gallery-published" checked style="width:auto;display:inline-block;margin-right:.4rem;">Published</label></div>
+            <div class="full"><label>Image URL (thumbnail)</label><input id="gallery-image" required placeholder="https://…"></div>
+            <div class="full"><label>Full-size image URL (optional — falls back to thumbnail)</label><input id="gallery-full-image" placeholder="https://…"></div>
+          </div>
+          <div style="margin-top:1rem; display:flex; gap:.6rem; align-items:center;">
+            <button type="submit" class="primary-btn">Save</button>
+            <button type="button" id="gallery-cancel" class="tabbtn inactive hidden">Cancel edit</button>
+            <span id="gallery-save-msg" class="save-msg"></span>
+          </div>
+        </form>
+      </div>
+      <table>
+        <thead><tr><th>Image</th><th>Category</th><th>Caption</th><th>Published</th><th></th></tr></thead>
+        <tbody id="gallery-body"><tr><td colspan="5" class="muted">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script>
+  const gate = document.getElementById('gate');
+  const dash = document.getElementById('dashboard');
+  const pwInput = document.getElementById('pw');
+  const gateError = document.getElementById('gate-error');
+  let ADMIN_PW = '';
+
+  function esc(s){ return (s ?? '').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function authHeaders(json){ const h = { 'x-admin-password': ADMIN_PW }; if (json) h['Content-Type'] = 'application/json'; return h; }
+
+  async function loadVisitsAndInquiries(){
+    const [visitsRes, inquiriesRes] = await Promise.all([
+      fetch('/api/visit', { headers: authHeaders() }),
+      fetch('/api/inquiry', { headers: authHeaders() }),
+    ]);
+    if (!visitsRes.ok || !inquiriesRes.ok) throw new Error('unauthorized');
+    const visits = await visitsRes.json();
+    const inquiries = await inquiriesRes.json();
+
+    document.getElementById('visits-body').innerHTML = visits.length ? visits.map(v => `
+      <tr><td>${esc(new Date(v.visitDate).toLocaleDateString())}</td><td>${esc(v.timeSlot)}</td><td>${esc(v.parentName)}</td>
+      <td>${esc(v.studentName)}</td><td>${esc(v.grade)}</td><td>${esc(v.mobile)}</td><td>${esc(v.email)}</td>
+      <td>${esc(v.visitors)}</td><td>${esc(v.status)}</td></tr>`).join('') : '<tr><td colspan="9" class="muted">No visit requests yet.</td></tr>';
+
+    document.getElementById('inquiries-body').innerHTML = inquiries.length ? inquiries.map(i => `
+      <tr><td>${esc(new Date(i.createdAt).toLocaleDateString())}</td><td>${esc(i.parentName)}</td><td>${esc(i.grade || '—')}</td>
+      <td>${esc(i.mobile)}</td><td>${esc(i.email)}</td><td>${esc(i.message || '—')}</td><td>${esc(i.status)}</td></tr>`).join('') : '<tr><td colspan="7" class="muted">No enquiries yet.</td></tr>';
+  }
+
+  // ---------------- News & Events CRUD ----------------
+  async function loadNews(){
+    const res = await fetch('/api/news', { headers: authHeaders() });
+    const items = await res.json();
+    document.getElementById('news-body').innerHTML = items.length ? items.map(n => `
+      <tr>
+        <td>${esc(new Date(n.date).toLocaleDateString())}</td>
+        <td><span class="badge">${esc(n.category)}</span></td>
+        <td>${esc(n.title)}</td>
+        <td>${n.published ? 'Yes' : 'No'}</td>
+        <td class="row-actions">
+          <button class="link-btn" data-edit-news="${n._id}">Edit</button>
+          <button class="link-btn danger" data-del-news="${n._id}">Delete</button>
+        </td>
+      </tr>`).join('') : '<tr><td colspan="5" class="muted">No posts yet — add one above.</td></tr>';
+    window._newsCache = items;
+  }
+
+  document.getElementById('news-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = document.getElementById('news-id').value;
+    const payload = {
+      title: document.getElementById('news-title').value,
+      category: document.getElementById('news-category').value,
+      date: document.getElementById('news-date').value,
+      excerpt: document.getElementById('news-excerpt').value,
+      imageUrl: document.getElementById('news-image').value,
+      published: document.getElementById('news-published').checked,
+    };
+    const msg = document.getElementById('news-save-msg');
+    try {
+      const res = await fetch('/api/news', {
+        method: id ? 'PUT' : 'POST',
+        headers: authHeaders(true),
+        body: JSON.stringify(id ? { id, ...payload } : payload),
+      });
+      if (!res.ok) throw new Error((await res.json()).error || 'Save failed');
+      msg.textContent = 'Saved.'; msg.className = 'save-msg ok';
+      resetNewsForm();
+      loadNews();
+    } catch (err) {
+      msg.textContent = err.message; msg.className = 'save-msg err';
+    }
+  });
+
+  function resetNewsForm(){
+    document.getElementById('news-form').reset();
+    document.getElementById('news-id').value = '';
+    document.getElementById('news-form-title').textContent = 'Add news / event';
+    document.getElementById('news-cancel').classList.add('hidden');
+    document.getElementById('news-published').checked = true;
+  }
+  document.getElementById('news-cancel').addEventListener('click', resetNewsForm);
+
+  document.getElementById('news-body').addEventListener('click', async (e) => {
+    const editId = e.target.dataset.editNews;
+    const delId = e.target.dataset.delNews;
+    if (editId) {
+      const item = (window._newsCache || []).find(n => n._id === editId);
+      if (!item) return;
+      document.getElementById('news-id').value = item._id;
+      document.getElementById('news-title').value = item.title;
+      document.getElementById('news-category').value = item.category;
+      document.getElementById('news-date').value = new Date(item.date).toISOString().slice(0,10);
+      document.getElementById('news-excerpt').value = item.excerpt || '';
+      document.getElementById('news-image').value = item.imageUrl || '';
+      document.getElementById('news-published').checked = item.published !== false;
+      document.getElementById('news-form-title').textContent = 'Edit news / event';
+      document.getElementById('news-cancel').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (delId) {
+      if (!confirm('Delete this post?')) return;
+      await fetch('/api/news?id=' + encodeURIComponent(delId), { method: 'DELETE', headers: authHeaders() });
+      loadNews();
+    }
+  });
+
+  // ---------------- Gallery CRUD ----------------
+  async function loadGallery(){
+    const res = await fetch('/api/gallery', { headers: authHeaders() });
+    const items = await res.json();
+    document.getElementById('gallery-body').innerHTML = items.length ? items.map(g => `
+      <tr>
+        <td><img class="thumb" src="${esc(g.imageUrl)}" alt=""></td>
+        <td><span class="badge">${esc(g.category)}</span></td>
+        <td>${esc(g.caption)}</td>
+        <td>${g.published ? 'Yes' : 'No'}</td>
+        <td class="row-actions">
+          <button class="link-btn" data-edit-gallery="${g._id}">Edit</button>
+          <button class="link-btn danger" data-del-gallery="${g._id}">Delete</button>
+        </td>
+      </tr>`).join('') : '<tr><td colspan="5" class="muted">No gallery items yet — add one above.</td></tr>';
+    window._galleryCache = items;
+  }
+
+  document.getElementById('gallery-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = document.getElementById('gallery-id').value;
+    const payload = {
+      caption: document.getElementById('gallery-caption').value,
+      category: document.getElementById('gallery-category').value,
+      imageUrl: document.getElementById('gallery-image').value,
+      fullImageUrl: document.getElementById('gallery-full-image').value,
+      published: document.getElementById('gallery-published').checked,
+    };
+    const msg = document.getElementById('gallery-save-msg');
+    try {
+      const res = await fetch('/api/gallery', {
+        method: id ? 'PUT' : 'POST',
+        headers: authHeaders(true),
+        body: JSON.stringify(id ? { id, ...payload } : payload),
+      });
+      if (!res.ok) throw new Error((await res.json()).error || 'Save failed');
+      msg.textContent = 'Saved.'; msg.className = 'save-msg ok';
+      resetGalleryForm();
+      loadGallery();
+    } catch (err) {
+      msg.textContent = err.message; msg.className = 'save-msg err';
+    }
+  });
+
+  function resetGalleryForm(){
+    document.getElementById('gallery-form').reset();
+    document.getElementById('gallery-id').value = '';
+    document.getElementById('gallery-form-title').textContent = 'Add gallery item';
+    document.getElementById('gallery-cancel').classList.add('hidden');
+    document.getElementById('gallery-published').checked = true;
+  }
+  document.getElementById('gallery-cancel').addEventListener('click', resetGalleryForm);
+
+  document.getElementById('gallery-body').addEventListener('click', async (e) => {
+    const editId = e.target.dataset.editGallery;
+    const delId = e.target.dataset.delGallery;
+    if (editId) {
+      const item = (window._galleryCache || []).find(g => g._id === editId);
+      if (!item) return;
+      document.getElementById('gallery-id').value = item._id;
+      document.getElementById('gallery-caption').value = item.caption;
+      document.getElementById('gallery-category').value = item.category;
+      document.getElementById('gallery-image').value = item.imageUrl || '';
+      document.getElementById('gallery-full-image').value = item.fullImageUrl || '';
+      document.getElementById('gallery-published').checked = item.published !== false;
+      document.getElementById('gallery-form-title').textContent = 'Edit gallery item';
+      document.getElementById('gallery-cancel').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (delId) {
+      if (!confirm('Delete this gallery item?')) return;
+      await fetch('/api/gallery?id=' + encodeURIComponent(delId), { method: 'DELETE', headers: authHeaders() });
+      loadGallery();
+    }
+  });
+
+  // ---------------- Sign in / tabs ----------------
+  async function signIn(password){
+    ADMIN_PW = password;
+    await loadVisitsAndInquiries();
+    await loadNews();
+    await loadGallery();
+  }
+
+  document.getElementById('signin').addEventListener('click', async () => {
+    try {
+      await signIn(pwInput.value);
+      sessionStorage.setItem('hg_admin_pw', pwInput.value);
+      gate.classList.add('hidden');
+      dash.classList.remove('hidden');
+    } catch {
+      gateError.classList.remove('hidden');
+    }
+  });
+
+  document.getElementById('signout').addEventListener('click', () => {
+    sessionStorage.removeItem('hg_admin_pw');
+    ADMIN_PW = '';
+    dash.classList.add('hidden');
+    gate.classList.remove('hidden');
+  });
+
+  document.querySelectorAll('.tabbtn[data-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabbtn[data-tab]').forEach(b => b.classList.add('inactive'));
+      btn.classList.remove('inactive');
+      ['visits','inquiries','news','gallery'].forEach(t => {
+        document.getElementById('tab-' + t).classList.toggle('hidden', btn.dataset.tab !== t);
+      });
+    });
+  });
+
+  const stashed = sessionStorage.getItem('hg_admin_pw');
+  if (stashed) {
+    signIn(stashed).then(() => {
+      gate.classList.add('hidden');
+      dash.classList.remove('hidden');
+    }).catch(() => sessionStorage.removeItem('hg_admin_pw'));
+  }
+</script>
+</body>
+</html>
