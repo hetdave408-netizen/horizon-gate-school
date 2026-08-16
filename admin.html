@@ -42,10 +42,11 @@
 
 <div id="gate" class="gate">
   <h2 style="margin-top:0;">Admin sign-in</h2>
-  <p class="muted">Shared admin password — set via <code>ADMIN_PASSWORD</code> in your environment variables.</p>
-  <input id="pw" type="password" placeholder="Admin password">
-  <button id="signin">View dashboard</button>
-  <p id="gate-error" class="error hidden">Incorrect password.</p>
+  <p class="muted">Sign in with the admin account configured on the server.</p>
+  <input id="admin-email" type="email" placeholder="Admin email" autocomplete="username">
+  <input id="pw" type="password" placeholder="Password" autocomplete="current-password">
+  <button id="signin">Sign in</button>
+  <p id="gate-error" class="error hidden">Incorrect email or password.</p>
 </div>
 
 <div id="dashboard" class="hidden">
@@ -59,6 +60,7 @@
       <button class="tabbtn inactive" data-tab="inquiries">Admission Enquiries</button>
       <button class="tabbtn inactive" data-tab="news">News &amp; Events</button>
       <button class="tabbtn inactive" data-tab="gallery">Gallery</button>
+      <button class="tabbtn inactive" data-tab="teachers">Teachers</button>
     </div>
 
     <div id="tab-visits">
@@ -137,18 +139,50 @@
         <tbody id="gallery-body"><tr><td colspan="5" class="muted">Loading…</td></tr></tbody>
       </table>
     </div>
+
+    <div id="tab-teachers" class="hidden">
+      <div class="panel">
+        <h3 id="teacher-form-title">Add teacher</h3>
+        <form id="teacher-form">
+          <input type="hidden" id="teacher-id">
+          <div class="form-grid">
+            <div><label>Name</label><input id="teacher-name" required></div>
+            <div><label>Role / Subject</label><input id="teacher-role" required placeholder="e.g. Head of STEM"></div>
+            <div class="full"><label>Bio</label><textarea id="teacher-bio" rows="2"></textarea></div>
+            <div><label>Qualifications</label><input id="teacher-qualifications" placeholder="e.g. M.Sc. Physics, B.Ed."></div>
+            <div><label>Display order (lower shows first)</label><input id="teacher-order" type="number" value="0"></div>
+            <div class="full"><label>Photo URL</label><input id="teacher-photo" placeholder="https://…"></div>
+            <div><label><input type="checkbox" id="teacher-published" checked style="width:auto;display:inline-block;margin-right:.4rem;">Published</label></div>
+          </div>
+          <div style="margin-top:1rem; display:flex; gap:.6rem; align-items:center;">
+            <button type="submit" class="primary-btn">Save</button>
+            <button type="button" id="teacher-cancel" class="tabbtn inactive hidden">Cancel edit</button>
+            <span id="teacher-save-msg" class="save-msg"></span>
+          </div>
+        </form>
+      </div>
+      <table>
+        <thead><tr><th>Photo</th><th>Name</th><th>Role</th><th>Order</th><th>Published</th><th></th></tr></thead>
+        <tbody id="teacher-body"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
+      </table>
+    </div>
   </main>
 </div>
 
 <script>
   const gate = document.getElementById('gate');
   const dash = document.getElementById('dashboard');
+  const emailInput = document.getElementById('admin-email');
   const pwInput = document.getElementById('pw');
   const gateError = document.getElementById('gate-error');
-  let ADMIN_PW = '';
 
   function esc(s){ return (s ?? '').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-  function authHeaders(json){ const h = { 'x-admin-password': ADMIN_PW }; if (json) h['Content-Type'] = 'application/json'; return h; }
+
+  // No more x-admin-password header — the browser sends the HttpOnly
+  // session cookie automatically on same-origin fetch requests (that's
+  // the default credentials mode) once logged in. Client-side JS never
+  // holds the password or a readable session token.
+  function authHeaders(json){ const h = {}; if (json) h['Content-Type'] = 'application/json'; return h; }
 
   async function loadVisitsAndInquiries(){
     const [visitsRes, inquiriesRes] = await Promise.all([
@@ -323,49 +357,161 @@
     }
   });
 
-  // ---------------- Sign in / tabs ----------------
-  async function signIn(password){
-    ADMIN_PW = password;
-    await loadVisitsAndInquiries();
-    await loadNews();
-    await loadGallery();
+  // ---------------- Teachers CRUD ----------------
+  async function loadTeachers(){
+    const res = await fetch('/api/teachers', { headers: authHeaders() });
+    const items = await res.json();
+    document.getElementById('teacher-body').innerHTML = items.length ? items.map(t => `
+      <tr>
+        <td><img class="thumb" src="${esc(t.photoUrl || '')}" alt=""></td>
+        <td>${esc(t.name)}</td>
+        <td>${esc(t.role)}</td>
+        <td>${esc(t.order ?? 0)}</td>
+        <td>${t.published ? 'Yes' : 'No'}</td>
+        <td class="row-actions">
+          <button class="link-btn" data-edit-teacher="${t._id}">Edit</button>
+          <button class="link-btn danger" data-del-teacher="${t._id}">Delete</button>
+        </td>
+      </tr>`).join('') : '<tr><td colspan="6" class="muted">No teachers yet — add one above.</td></tr>';
+    window._teacherCache = items;
   }
 
-  document.getElementById('signin').addEventListener('click', async () => {
+  document.getElementById('teacher-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = document.getElementById('teacher-id').value;
+    const payload = {
+      name: document.getElementById('teacher-name').value,
+      role: document.getElementById('teacher-role').value,
+      bio: document.getElementById('teacher-bio').value,
+      qualifications: document.getElementById('teacher-qualifications').value,
+      order: document.getElementById('teacher-order').value,
+      photoUrl: document.getElementById('teacher-photo').value,
+      published: document.getElementById('teacher-published').checked,
+    };
+    const msg = document.getElementById('teacher-save-msg');
     try {
-      await signIn(pwInput.value);
-      sessionStorage.setItem('hg_admin_pw', pwInput.value);
-      gate.classList.add('hidden');
-      dash.classList.remove('hidden');
-    } catch {
-      gateError.classList.remove('hidden');
+      const res = await fetch('/api/teachers', {
+        method: id ? 'PUT' : 'POST',
+        headers: authHeaders(true),
+        body: JSON.stringify(id ? { id, ...payload } : payload),
+      });
+      if (!res.ok) throw new Error((await res.json()).error || 'Save failed');
+      msg.textContent = 'Saved.'; msg.className = 'save-msg ok';
+      resetTeacherForm();
+      loadTeachers();
+    } catch (err) {
+      msg.textContent = err.message; msg.className = 'save-msg err';
     }
   });
 
-  document.getElementById('signout').addEventListener('click', () => {
-    sessionStorage.removeItem('hg_admin_pw');
-    ADMIN_PW = '';
+  function resetTeacherForm(){
+    document.getElementById('teacher-form').reset();
+    document.getElementById('teacher-id').value = '';
+    document.getElementById('teacher-order').value = '0';
+    document.getElementById('teacher-form-title').textContent = 'Add teacher';
+    document.getElementById('teacher-cancel').classList.add('hidden');
+    document.getElementById('teacher-published').checked = true;
+  }
+  document.getElementById('teacher-cancel').addEventListener('click', resetTeacherForm);
+
+  document.getElementById('teacher-body').addEventListener('click', async (e) => {
+    const editId = e.target.dataset.editTeacher;
+    const delId = e.target.dataset.delTeacher;
+    if (editId) {
+      const item = (window._teacherCache || []).find(t => t._id === editId);
+      if (!item) return;
+      document.getElementById('teacher-id').value = item._id;
+      document.getElementById('teacher-name').value = item.name;
+      document.getElementById('teacher-role').value = item.role;
+      document.getElementById('teacher-bio').value = item.bio || '';
+      document.getElementById('teacher-qualifications').value = item.qualifications || '';
+      document.getElementById('teacher-order').value = item.order ?? 0;
+      document.getElementById('teacher-photo').value = item.photoUrl || '';
+      document.getElementById('teacher-published').checked = item.published !== false;
+      document.getElementById('teacher-form-title').textContent = 'Edit teacher';
+      document.getElementById('teacher-cancel').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (delId) {
+      if (!confirm('Delete this teacher?')) return;
+      await fetch('/api/teachers?id=' + encodeURIComponent(delId), { method: 'DELETE', headers: authHeaders() });
+      loadTeachers();
+    }
+  });
+
+  // ---------------- Sign in / tabs ----------------
+  async function loadAllData(){
+    await loadVisitsAndInquiries();
+    await loadNews();
+    await loadGallery();
+    await loadTeachers();
+  }
+
+  function showDashboard(){
+    gate.classList.add('hidden');
+    dash.classList.remove('hidden');
+  }
+  function showGate(){
     dash.classList.add('hidden');
     gate.classList.remove('hidden');
+  }
+
+  document.getElementById('signin').addEventListener('click', async () => {
+    gateError.classList.add('hidden');
+    const signinBtn = document.getElementById('signin');
+    signinBtn.disabled = true;
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailInput.value, password: pwInput.value }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Sign-in failed.');
+      pwInput.value = '';
+      await loadAllData();
+      showDashboard();
+    } catch (err) {
+      gateError.textContent = err.message || 'Incorrect email or password.';
+      gateError.classList.remove('hidden');
+    } finally {
+      signinBtn.disabled = false;
+    }
+  });
+
+  // Let Enter submit the form from either field
+  [emailInput, pwInput].forEach(el => el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('signin').click();
+  }));
+
+  document.getElementById('signout').addEventListener('click', async () => {
+    try { await fetch('/api/auth/logout', { method: 'POST' }); } catch {}
+    showGate();
   });
 
   document.querySelectorAll('.tabbtn[data-tab]').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.tabbtn[data-tab]').forEach(b => b.classList.add('inactive'));
       btn.classList.remove('inactive');
-      ['visits','inquiries','news','gallery'].forEach(t => {
+      ['visits','inquiries','news','gallery','teachers'].forEach(t => {
         document.getElementById('tab-' + t).classList.toggle('hidden', btn.dataset.tab !== t);
       });
     });
   });
 
-  const stashed = sessionStorage.getItem('hg_admin_pw');
-  if (stashed) {
-    signIn(stashed).then(() => {
-      gate.classList.add('hidden');
-      dash.classList.remove('hidden');
-    }).catch(() => sessionStorage.removeItem('hg_admin_pw'));
-  }
+  // On load, check whether a valid session cookie already exists
+  // (server-verified via /api/auth/me) rather than trusting anything
+  // stored client-side.
+  (async () => {
+    try {
+      const res = await fetch('/api/auth/me');
+      if (!res.ok) return; // not logged in — stay on the gate
+      await loadAllData();
+      showDashboard();
+    } catch {
+      // network hiccup — stay on the gate, user can just log in
+    }
+  })();
 </script>
 </body>
 </html>

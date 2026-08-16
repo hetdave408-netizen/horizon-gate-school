@@ -1,0 +1,166 @@
+/* ============================================================
+   Horizon Gate School — Design System
+   Palette: Campus Navy / Stone Ivory / Brass Gold / Courtyard Sage
+   Type: Fraunces (display) + Inter (body) + Space Grotesk (data/stats)
+   ============================================================ */
+
+:root{
+  --navy: #0F1A33;
+  --navy-deep: #0A1224;
+  --ivory: #F6F3EC;
+  --ivory-soft: #FBFAF6;
+  --gold: #C89B3C;
+  --gold-bright: #E0B858;
+  --sage: #6B8F71;
+  --sage-deep: #4E6B54;
+  --ink: #23262B;
+  --warm-white: #FFFDF9;
+  --line: rgba(200,155,60,0.25);
+}
+
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter', ui-sans-serif, system-ui, sans-serif;
+  color:var(--ink);
+  background:var(--ivory-soft);
+  -webkit-font-smoothing:antialiased;
+}
+.font-display{font-family:'Fraunces', Georgia, serif;}
+.font-data{font-family:'Space Grotesk', ui-monospace, monospace;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+}
+
+/* ---------- Focus states ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+  outline:2px solid var(--gold-bright);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.85rem 1.7rem; font-weight:600; font-size:.95rem; letter-spacing:.01em;
+  border-radius:2px; cursor:pointer; transition:all .25s ease; white-space:nowrap;
+  position:relative; isolation:isolate;
+}
+.btn-gold{ background:var(--gold); color:var(--navy-deep); }
+.btn-gold:hover{ background:var(--gold-bright); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(200,155,60,.55); }
+.btn-outline-light{ border:1.5px solid rgba(255,253,249,.5); color:var(--warm-white); background:transparent; }
+.btn-outline-light:hover{ border-color:var(--warm-white); background:rgba(255,253,249,.08); }
+.btn-outline-dark{ border:1.5px solid rgba(15,26,51,.35); color:var(--navy); background:transparent; }
+.btn-outline-dark:hover{ border-color:var(--navy); background:rgba(15,26,51,.05); }
+
+/* ---------- Nav ---------- */
+#site-nav{ transition: background-color .35s ease, box-shadow .35s ease, padding .35s ease; }
+#site-nav.scrolled{ background:var(--navy); box-shadow:0 8px 30px -12px rgba(0,0,0,.4); }
+.nav-link{ position:relative; color:var(--warm-white); opacity:.85; font-size:.9rem; letter-spacing:.02em; }
+.nav-link:hover{ opacity:1; }
+.nav-link::after{
+  content:''; position:absolute; left:0; bottom:-6px; width:0; height:1.5px; background:var(--gold-bright);
+  transition:width .25s ease;
+}
+.nav-link:hover::after{ width:100%; }
+
+/* Touch-device dropdown toggle (JS-driven, mirrors the :hover reveal above) */
+[data-dropdown].dropdown-open [data-dropdown-panel]{
+  opacity:1 !important; visibility:visible !important;
+}
+[data-dropdown].dropdown-open [data-dropdown-trigger] svg{ transform:rotate(180deg); }
+
+/* ---------- Gate motif (signature element) ---------- */
+.gate-arch{
+  clip-path: path('M0,600 L0,140 C0,50 90,0 200,0 C310,0 400,50 400,140 L400,600 Z');
+}
+.gate-panel{
+  background: linear-gradient(160deg, rgba(255,253,249,0.14), rgba(255,253,249,0.02));
+  border:1px solid rgba(255,253,249,.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.gate-glow{
+  background: radial-gradient(closest-side, rgba(224,184,88,.35), transparent 70%);
+}
+
+/* ---------- Glass cards ---------- */
+.card-glass{
+  background: rgba(255,253,249,.06);
+  border:1px solid rgba(255,253,249,.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.card-glass-light{
+  background: rgba(255,255,255,.55);
+  border:1px solid rgba(15,26,51,.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ---------- Section dividers ---------- */
+.eyebrow{
+  font-family:'Space Grotesk', monospace; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+}
+.rule{ height:1px; background:linear-gradient(90deg, var(--gold), transparent); }
+
+/* ---------- Stat ring (signature: annual rings) ---------- */
+.stat-ring{
+  width:64px; height:64px; border-radius:50%;
+  border:2px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.stat-ring::before{
+  content:''; position:absolute; inset:-8px; border-radius:50%; border:1px solid rgba(200,155,60,.35);
+}
+
+/* ---------- Reveal-on-scroll (fallback if AOS not loaded) ---------- */
+[data-reveal]{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+[data-reveal].is-visible{ opacity:1; transform:translateY(0); }
+
+/* ---------- Marquee (accreditation strip) ---------- */
+.marquee-track{
+  display:flex; gap:4rem; width:max-content; animation:marquee 28s linear infinite;
+}
+@keyframes marquee{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+/* ---------- Testimonial slider ---------- */
+.slide{ display:none; }
+.slide.active{ display:block; animation:fadeIn .6s ease; }
+@keyframes fadeIn{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+/* ---------- Gallery lightbox ---------- */
+#lightbox{
+  position:fixed; inset:0; background:rgba(10,18,36,.94); z-index:100;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; visibility:hidden; transition:opacity .3s ease, visibility 0s linear .3s;
+}
+#lightbox.open{ opacity:1; visibility:visible; transition:opacity .3s ease, visibility 0s; }
+#lightbox figure{ transform:scale(.92); transition:transform .35s cubic-bezier(.2,.8,.2,1); }
+#lightbox.open figure{ transform:scale(1); }
+@media (prefers-reduced-motion: reduce){
+  #lightbox, #lightbox figure{ transition:none; }
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar{ width:10px; }
+::-webkit-scrollbar-track{ background:var(--ivory); }
+::-webkit-scrollbar-thumb{ background:var(--gold); border-radius:6px; }
+
+/* ---------- Scroll progress bar ---------- */
+#scroll-progress{ position:fixed; top:0; left:0; height:3px; background:var(--gold-bright); z-index:200; width:0%; }
+
+/* ---------- Floating action buttons ---------- */
+.fab{
+  position:fixed; right:1.5rem; z-index:90; display:flex; align-items:center; gap:.5rem;
+  box-shadow:0 10px 30px -10px rgba(0,0,0,.4);
+}
+
+/* ---------- Accordion ---------- */
+.accordion-item[open] summary .chev{ transform:rotate(45deg); }
+summary{ cursor:pointer; list-style:none; }
+summary::-webkit-details-marker{ display:none; }
+
+/* ---------- Text balance ---------- */
+.balance{ text-wrap:balance; }
