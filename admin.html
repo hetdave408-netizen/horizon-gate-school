@@ -199,7 +199,7 @@
       <td>${esc(v.visitors)}</td><td>${esc(v.status)}</td></tr>`).join('') : '<tr><td colspan="9" class="muted">No visit requests yet.</td></tr>';
 
     document.getElementById('inquiries-body').innerHTML = inquiries.length ? inquiries.map(i => `
-      <tr><td>${esc(new Date(i.createdAt).toLocaleDateString())}</td><td>${esc(i.parentName)}</td><td>${esc(i.grade || '—')}</td>
+      <tr><td>${esc(new Date(i.createdAt).toLocaleDateString())}</td><td>${esc(i.studentName || i.parentName)}</td><td>${esc(i.grade || '—')}</td>
       <td>${esc(i.mobile)}</td><td>${esc(i.email)}</td><td>${esc(i.message || '—')}</td><td>${esc(i.status)}</td></tr>`).join('') : '<tr><td colspan="7" class="muted">No enquiries yet.</td></tr>';
   }
 

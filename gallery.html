@@ -45,50 +45,54 @@
 <body class="bg-ivorySoft">
 
 <div id="scroll-progress"></div>
-<nav id="site-nav" class="fixed top-0 inset-x-0 z-50">
+<nav id="site-nav" class="fixed top-0 inset-x-0 z-50 nav-solid">
   <div class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between h-20">
     <a href="index.html" class="flex items-center gap-3">
       <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M17 2L31 10V30H3V10L17 2Z" stroke="#E0B858" stroke-width="1.6"/><path d="M17 2V30" stroke="#E0B858" stroke-width="1" opacity=".5"/><circle cx="17" cy="14" r="3.2" stroke="#E0B858" stroke-width="1.2"/></svg>
       <span class="font-display text-warmWhite text-lg tracking-wide leading-none">Horizon Gate<span class="block text-[10px] font-data tracking-[.25em] text-goldBright/80 mt-0.5">SCHOOL · EST. 1998</span></span>
     </a>
-    <div class="hidden lg:flex items-center gap-8"><a href="index.html" class="nav-link  py-2">Home</a>
+    <div class="hidden lg:flex items-center gap-6"><a href="index.html" class="nav-link  py-2">Home</a>
 
-            <div class="relative group" data-dropdown>
-              <a href="about.html" data-dropdown-trigger class="nav-link  flex items-center gap-1 py-2">About
-                <svg width="10" height="6" viewBox="0 0 10 6" class="mt-0.5 opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-              </a>
+            <div class="relative group flex items-center" data-dropdown>
+              <a href="about.html" class="nav-link  py-2">About</a>
+              <button type="button" data-dropdown-toggle aria-label="Show About submenu" aria-expanded="false" class="nav-link  py-2 pl-1 pr-0.5 -ml-1">
+                <svg width="10" height="6" viewBox="0 0 10 6" class="opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+              </button>
               <div data-dropdown-panel class="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-40">
                 <div class="gate-panel rounded-sm min-w-[220px] py-2 shadow-2xl"><a href="about.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">About Us</a>
-<a href="about.html#faculty" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Our Faculty</a>
+<a href="faculty.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Our Faculty</a>
 <a href="achievements.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Achievements</a>
 <a href="student-life.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Student Life</a></div>
               </div>
             </div>
 
-            <div class="relative group" data-dropdown>
-              <a href="academics.html" data-dropdown-trigger class="nav-link  flex items-center gap-1 py-2">Academics
-                <svg width="10" height="6" viewBox="0 0 10 6" class="mt-0.5 opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-              </a>
+            <div class="relative group flex items-center" data-dropdown>
+              <a href="academics.html" class="nav-link  py-2">Academics</a>
+              <button type="button" data-dropdown-toggle aria-label="Show Academics submenu" aria-expanded="false" class="nav-link  py-2 pl-1 pr-0.5 -ml-1">
+                <svg width="10" height="6" viewBox="0 0 10 6" class="opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+              </button>
               <div data-dropdown-panel class="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-40">
                 <div class="gate-panel rounded-sm min-w-[220px] py-2 shadow-2xl"><a href="academics.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Academics Overview</a>
 <a href="curriculum.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Curriculum</a></div>
               </div>
             </div>
 
-            <div class="relative group" data-dropdown>
-              <a href="campus.html" data-dropdown-trigger class="nav-link  flex items-center gap-1 py-2">Campus
-                <svg width="10" height="6" viewBox="0 0 10 6" class="mt-0.5 opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-              </a>
+            <div class="relative group flex items-center" data-dropdown>
+              <a href="campus.html" class="nav-link nav-link-active py-2">Campus</a>
+              <button type="button" data-dropdown-toggle aria-label="Show Campus submenu" aria-expanded="false" class="nav-link nav-link-active py-2 pl-1 pr-0.5 -ml-1">
+                <svg width="10" height="6" viewBox="0 0 10 6" class="opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+              </button>
               <div data-dropdown-panel class="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-40">
                 <div class="gate-panel rounded-sm min-w-[220px] py-2 shadow-2xl"><a href="campus.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Campus & Facilities</a>
-<a href="gallery.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Gallery</a></div>
+<a href="gallery.html" class="block px-5 py-3 text-sm text-goldBright hover:text-goldBright hover:bg-white/5 transition">Gallery</a></div>
               </div>
             </div>
 
-            <div class="relative group" data-dropdown>
-              <a href="admissions.html" data-dropdown-trigger class="nav-link  flex items-center gap-1 py-2">Admissions
-                <svg width="10" height="6" viewBox="0 0 10 6" class="mt-0.5 opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-              </a>
+            <div class="relative group flex items-center" data-dropdown>
+              <a href="admissions.html" class="nav-link  py-2">Admissions</a>
+              <button type="button" data-dropdown-toggle aria-label="Show Admissions submenu" aria-expanded="false" class="nav-link  py-2 pl-1 pr-0.5 -ml-1">
+                <svg width="10" height="6" viewBox="0 0 10 6" class="opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+              </button>
               <div data-dropdown-panel class="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-40">
                 <div class="gate-panel rounded-sm min-w-[220px] py-2 shadow-2xl"><a href="admissions.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Admissions Process</a>
 <a href="admission-registration.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Register for Admission</a>
@@ -106,13 +110,24 @@
     </button>
   </div>
   <div id="mobile-menu" class="hidden lg:hidden flex-col bg-navyDeep px-6 pb-6">
-    <a href="index.html" class="block py-3 text-warmWhite/90 border-b border-white/10">Home</a>
-<a href="about.html" class="block py-3 text-warmWhite/90 border-b border-white/10">About</a>
-<a href="academics.html" class="block py-3 text-warmWhite/90 border-b border-white/10">Academics</a>
-<a href="campus.html" class="block py-3 text-warmWhite/90 border-b border-white/10">Campus</a>
-<a href="admissions.html" class="block py-3 text-warmWhite/90 border-b border-white/10">Admissions</a>
-<a href="news.html" class="block py-3 text-warmWhite/90 border-b border-white/10">News</a>
-<a href="contact.html" class="block py-3 text-warmWhite/90 border-b border-white/10">Contact</a>
+    <a href="index.html" class="block py-3 text-warmWhite/90  border-b border-white/10">Home</a>
+<a href="about.html" class="block py-3 text-warmWhite/90  border-b border-white/10">About</a>
+<a href="about.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; About Us</a>
+<a href="faculty.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Our Faculty</a>
+<a href="achievements.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Achievements</a>
+<a href="student-life.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Student Life</a>
+<a href="academics.html" class="block py-3 text-warmWhite/90  border-b border-white/10">Academics</a>
+<a href="academics.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Academics Overview</a>
+<a href="curriculum.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Curriculum</a>
+<a href="campus.html" class="block py-3 text-warmWhite/90 text-goldBright font-semibold border-b border-white/10">Campus</a>
+<a href="campus.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Campus & Facilities</a>
+<a href="gallery.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65 text-goldBright border-b border-white/10">&rsaquo; Gallery</a>
+<a href="admissions.html" class="block py-3 text-warmWhite/90  border-b border-white/10">Admissions</a>
+<a href="admissions.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Admissions Process</a>
+<a href="admission-registration.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Register for Admission</a>
+<a href="book-a-visit.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Book a School Visit</a>
+<a href="news.html" class="block py-3 text-warmWhite/90  border-b border-white/10">News</a>
+<a href="contact.html" class="block py-3 text-warmWhite/90  border-b border-white/10">Contact</a>
     <a href="book-a-visit.html" class="btn-gold btn mt-4 w-full">Book a Visit</a>
   </div>
 </nav>
@@ -224,20 +239,41 @@
 
 
 <div class="fab bottom-24 flex-col items-end gap-3">
-  <a href="book-a-visit.html" class="btn-gold btn shadow-xl !rounded-full !px-5"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6h10M3 6a1 1 0 011-1h8a1 1 0 011 1v7a1 1 0 01-1 1H4a1 1 0 01-1-1V6zM5 3v3M11 3v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Book a Visit</a>
-  <a href="admissions.html#enquiry" class="btn-outline-dark btn bg-warmWhite shadow-xl !rounded-full !px-5">Enquire Now</a>
+  <a href="book-a-visit.html" class="btn-gold btn fab-shadow !rounded-full !px-5"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6h10M3 6a1 1 0 011-1h8a1 1 0 011 1v7a1 1 0 01-1 1H4a1 1 0 01-1-1V6zM5 3v3M11 3v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Book a Visit</a>
+  <a href="admissions.html#enquiry" class="btn-outline-dark btn bg-warmWhite fab-shadow !rounded-full !px-5">Enquire Now</a>
 </div>
-<button id="back-to-top" aria-label="Back to top" class="fab bottom-24 left-6 right-auto opacity-0 pointer-events-none w-11 h-11 !p-0 rounded-full bg-navy text-warmWhite items-center justify-center transition-opacity">
+<button id="back-to-top" aria-label="Back to top" class="fab fab-shadow bottom-24 left-6 right-auto opacity-0 pointer-events-none w-11 h-11 !p-0 rounded-full bg-navy text-warmWhite items-center justify-center transition-opacity">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M8 3L3 8M8 3l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
 
 <div id="lightbox">
-  <button data-lb-close aria-label="Close" class="absolute top-6 right-6 text-warmWhite/80 hover:text-goldBright text-3xl leading-none">&times;</button>
+  <button data-lb-close aria-label="Close" class="absolute top-6 right-6 text-warmWhite/80 hover:text-goldBright text-3xl leading-none z-10">&times;</button>
+  <button data-lb-prev aria-label="Previous image" class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-warmWhite/10 hover:bg-warmWhite/20 flex items-center justify-center text-warmWhite transition z-10">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3L5 9l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <button data-lb-next aria-label="Next image" class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-warmWhite/10 hover:bg-warmWhite/20 flex items-center justify-center text-warmWhite transition z-10">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 3l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
   <figure class="max-w-4xl w-[90%]">
     <img loading="lazy" src="" alt="" class="w-full max-h-[75vh] object-contain rounded-sm">
     <figcaption data-lb-caption class="text-warmWhite/70 text-sm text-center mt-4 font-data tracking-wide"></figcaption>
   </figure>
+</div>
+
+
+<div id="info-modal" class="fixed inset-0 z-[110] hidden items-center justify-center p-4">
+  <div data-modal-backdrop class="absolute inset-0 bg-navyDeep/80"></div>
+  <div class="relative bg-warmWhite rounded-sm max-w-2xl w-full max-h-[85vh] overflow-y-auto">
+    <button data-modal-close aria-label="Close" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-navy/5 hover:bg-navy/10 flex items-center justify-center text-navy text-xl leading-none z-10">&times;</button>
+    <img loading="lazy" data-modal-image src="" alt="" class="w-full aspect-[16/9] object-cover">
+    <div class="p-7 md:p-9">
+      <p data-modal-eyebrow class="eyebrow text-gold mb-2"></p>
+      <h3 data-modal-title class="font-display text-2xl md:text-3xl text-navy mb-4"></h3>
+      <p data-modal-body class="text-sm text-ink/65 leading-relaxed mb-6"></p>
+      <ul data-modal-highlights class="space-y-2"></ul>
+    </div>
+  </div>
 </div>
 
 

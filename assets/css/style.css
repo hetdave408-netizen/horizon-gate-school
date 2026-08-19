@@ -55,20 +55,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* ---------- Nav ---------- */
 #site-nav{ transition: background-color .35s ease, box-shadow .35s ease, padding .35s ease; }
-#site-nav.scrolled{ background:var(--navy); box-shadow:0 8px 30px -12px rgba(0,0,0,.4); }
-.nav-link{ position:relative; color:var(--warm-white); opacity:.85; font-size:.9rem; letter-spacing:.02em; }
+#site-nav.scrolled{ box-shadow:0 8px 30px -12px rgba(0,0,0,.4); }
+#site-nav.scrolled, #site-nav.nav-solid{ background:var(--navy); }
+.nav-link{ position:relative; color:var(--warm-white); opacity:.85; font-size:.9rem; letter-spacing:.02em; background:none; border:none; cursor:pointer; }
 .nav-link:hover{ opacity:1; }
 .nav-link::after{
   content:''; position:absolute; left:0; bottom:-6px; width:0; height:1.5px; background:var(--gold-bright);
   transition:width .25s ease;
 }
 .nav-link:hover::after{ width:100%; }
+/* Active state: gold text AND a permanent underline, not color alone —
+   color can wash out depending on what's behind a fixed nav, an
+   underline reads correctly either way. */
+.nav-link-active{ color:var(--gold-bright); opacity:1; }
+.nav-link-active::after{ width:100%; }
 
 /* Touch-device dropdown toggle (JS-driven, mirrors the :hover reveal above) */
 [data-dropdown].dropdown-open [data-dropdown-panel]{
   opacity:1 !important; visibility:visible !important;
 }
-[data-dropdown].dropdown-open [data-dropdown-trigger] svg{ transform:rotate(180deg); }
+[data-dropdown].dropdown-open [data-dropdown-toggle] svg{ transform:rotate(180deg); }
 
 /* ---------- Gate motif (signature element) ---------- */
 .gate-arch{
@@ -151,16 +157,41 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ---------- Scroll progress bar ---------- */
 #scroll-progress{ position:fixed; top:0; left:0; height:3px; background:var(--gold-bright); z-index:200; width:0%; }
 
-/* ---------- Floating action buttons ---------- */
+/* ---------- Floating action buttons ----------
+   The shadow lives on each rounded pill/circle below, never on this
+   wrapper — a shadow on a plain rectangular flex container casts a
+   rectangular smudge behind rounded children, which is exactly the
+   "dead black area" artifact this used to have against light sections. */
 .fab{
   position:fixed; right:1.5rem; z-index:90; display:flex; align-items:center; gap:.5rem;
-  box-shadow:0 10px 30px -10px rgba(0,0,0,.4);
+}
+.fab-shadow{
+  box-shadow:0 10px 24px -8px rgba(15,26,51,.35);
 }
 
 /* ---------- Accordion ---------- */
-.accordion-item[open] summary .chev{ transform:rotate(45deg); }
+details[open] > summary .chev{ transform:rotate(45deg); }
 summary{ cursor:pointer; list-style:none; }
 summary::-webkit-details-marker{ display:none; }
 
 /* ---------- Text balance ---------- */
 .balance{ text-wrap:balance; }
+
+/* ---------- Calendar widget (Book Appointment) ---------- */
+.cal-day{
+  aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+  font-size:.82rem; font-family:'Space Grotesk', monospace; color:var(--ink);
+  border-radius:6px; transition:all .15s ease; cursor:pointer; background:none; border:none;
+}
+.cal-day:hover:not(.cal-day-disabled){ background:rgba(200,155,60,.12); }
+.cal-day-muted{ color:rgba(35,38,43,.25); }
+.cal-day-disabled{ cursor:not-allowed; color:rgba(35,38,43,.2); }
+.cal-day-today{ box-shadow:inset 0 0 0 1.5px var(--gold); }
+.cal-day-selected{ background:var(--navy) !important; color:var(--warm-white) !important; font-weight:600; }
+.cal-nav-btn{
+  width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  border:1px solid rgba(15,26,51,.15); background:var(--warm-white); transition:all .2s ease;
+}
+.cal-nav-btn:hover{ background:var(--navy); color:var(--warm-white); border-color:var(--navy); }
+.cal-nav-btn:disabled{ opacity:.3; cursor:not-allowed; }
+.cal-nav-btn:disabled:hover{ background:var(--warm-white); color:inherit; border-color:rgba(15,26,51,.15); }

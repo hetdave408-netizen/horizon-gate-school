@@ -45,52 +45,56 @@
 <body class="bg-ivorySoft">
 
 <div id="scroll-progress"></div>
-<nav id="site-nav" class="fixed top-0 inset-x-0 z-50">
+<nav id="site-nav" class="fixed top-0 inset-x-0 z-50 nav-solid">
   <div class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between h-20">
     <a href="index.html" class="flex items-center gap-3">
       <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M17 2L31 10V30H3V10L17 2Z" stroke="#E0B858" stroke-width="1.6"/><path d="M17 2V30" stroke="#E0B858" stroke-width="1" opacity=".5"/><circle cx="17" cy="14" r="3.2" stroke="#E0B858" stroke-width="1.2"/></svg>
       <span class="font-display text-warmWhite text-lg tracking-wide leading-none">Horizon Gate<span class="block text-[10px] font-data tracking-[.25em] text-goldBright/80 mt-0.5">SCHOOL · EST. 1998</span></span>
     </a>
-    <div class="hidden lg:flex items-center gap-8"><a href="index.html" class="nav-link  py-2">Home</a>
+    <div class="hidden lg:flex items-center gap-6"><a href="index.html" class="nav-link  py-2">Home</a>
 
-            <div class="relative group" data-dropdown>
-              <a href="about.html" data-dropdown-trigger class="nav-link  flex items-center gap-1 py-2">About
-                <svg width="10" height="6" viewBox="0 0 10 6" class="mt-0.5 opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-              </a>
+            <div class="relative group flex items-center" data-dropdown>
+              <a href="about.html" class="nav-link  py-2">About</a>
+              <button type="button" data-dropdown-toggle aria-label="Show About submenu" aria-expanded="false" class="nav-link  py-2 pl-1 pr-0.5 -ml-1">
+                <svg width="10" height="6" viewBox="0 0 10 6" class="opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+              </button>
               <div data-dropdown-panel class="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-40">
                 <div class="gate-panel rounded-sm min-w-[220px] py-2 shadow-2xl"><a href="about.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">About Us</a>
-<a href="about.html#faculty" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Our Faculty</a>
+<a href="faculty.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Our Faculty</a>
 <a href="achievements.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Achievements</a>
 <a href="student-life.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Student Life</a></div>
               </div>
             </div>
 
-            <div class="relative group" data-dropdown>
-              <a href="academics.html" data-dropdown-trigger class="nav-link  flex items-center gap-1 py-2">Academics
-                <svg width="10" height="6" viewBox="0 0 10 6" class="mt-0.5 opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-              </a>
+            <div class="relative group flex items-center" data-dropdown>
+              <a href="academics.html" class="nav-link  py-2">Academics</a>
+              <button type="button" data-dropdown-toggle aria-label="Show Academics submenu" aria-expanded="false" class="nav-link  py-2 pl-1 pr-0.5 -ml-1">
+                <svg width="10" height="6" viewBox="0 0 10 6" class="opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+              </button>
               <div data-dropdown-panel class="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-40">
                 <div class="gate-panel rounded-sm min-w-[220px] py-2 shadow-2xl"><a href="academics.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Academics Overview</a>
 <a href="curriculum.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Curriculum</a></div>
               </div>
             </div>
 
-            <div class="relative group" data-dropdown>
-              <a href="campus.html" data-dropdown-trigger class="nav-link  flex items-center gap-1 py-2">Campus
-                <svg width="10" height="6" viewBox="0 0 10 6" class="mt-0.5 opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-              </a>
+            <div class="relative group flex items-center" data-dropdown>
+              <a href="campus.html" class="nav-link  py-2">Campus</a>
+              <button type="button" data-dropdown-toggle aria-label="Show Campus submenu" aria-expanded="false" class="nav-link  py-2 pl-1 pr-0.5 -ml-1">
+                <svg width="10" height="6" viewBox="0 0 10 6" class="opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+              </button>
               <div data-dropdown-panel class="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-40">
                 <div class="gate-panel rounded-sm min-w-[220px] py-2 shadow-2xl"><a href="campus.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Campus & Facilities</a>
 <a href="gallery.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Gallery</a></div>
               </div>
             </div>
 
-            <div class="relative group" data-dropdown>
-              <a href="admissions.html" data-dropdown-trigger class="nav-link text-goldBright flex items-center gap-1 py-2">Admissions
-                <svg width="10" height="6" viewBox="0 0 10 6" class="mt-0.5 opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
-              </a>
+            <div class="relative group flex items-center" data-dropdown>
+              <a href="admissions.html" class="nav-link nav-link-active py-2">Admissions</a>
+              <button type="button" data-dropdown-toggle aria-label="Show Admissions submenu" aria-expanded="false" class="nav-link nav-link-active py-2 pl-1 pr-0.5 -ml-1">
+                <svg width="10" height="6" viewBox="0 0 10 6" class="opacity-70 transition-transform"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+              </button>
               <div data-dropdown-panel class="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-40">
-                <div class="gate-panel rounded-sm min-w-[220px] py-2 shadow-2xl"><a href="admissions.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Admissions Process</a>
+                <div class="gate-panel rounded-sm min-w-[220px] py-2 shadow-2xl"><a href="admissions.html" class="block px-5 py-3 text-sm text-goldBright hover:text-goldBright hover:bg-white/5 transition">Admissions Process</a>
 <a href="admission-registration.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Register for Admission</a>
 <a href="book-a-visit.html" class="block px-5 py-3 text-sm text-warmWhite/80 hover:text-goldBright hover:bg-white/5 transition">Book a School Visit</a></div>
               </div>
@@ -106,13 +110,24 @@
     </button>
   </div>
   <div id="mobile-menu" class="hidden lg:hidden flex-col bg-navyDeep px-6 pb-6">
-    <a href="index.html" class="block py-3 text-warmWhite/90 border-b border-white/10">Home</a>
-<a href="about.html" class="block py-3 text-warmWhite/90 border-b border-white/10">About</a>
-<a href="academics.html" class="block py-3 text-warmWhite/90 border-b border-white/10">Academics</a>
-<a href="campus.html" class="block py-3 text-warmWhite/90 border-b border-white/10">Campus</a>
-<a href="admissions.html" class="block py-3 text-warmWhite/90 border-b border-white/10">Admissions</a>
-<a href="news.html" class="block py-3 text-warmWhite/90 border-b border-white/10">News</a>
-<a href="contact.html" class="block py-3 text-warmWhite/90 border-b border-white/10">Contact</a>
+    <a href="index.html" class="block py-3 text-warmWhite/90  border-b border-white/10">Home</a>
+<a href="about.html" class="block py-3 text-warmWhite/90  border-b border-white/10">About</a>
+<a href="about.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; About Us</a>
+<a href="faculty.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Our Faculty</a>
+<a href="achievements.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Achievements</a>
+<a href="student-life.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Student Life</a>
+<a href="academics.html" class="block py-3 text-warmWhite/90  border-b border-white/10">Academics</a>
+<a href="academics.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Academics Overview</a>
+<a href="curriculum.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Curriculum</a>
+<a href="campus.html" class="block py-3 text-warmWhite/90  border-b border-white/10">Campus</a>
+<a href="campus.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Campus & Facilities</a>
+<a href="gallery.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Gallery</a>
+<a href="admissions.html" class="block py-3 text-warmWhite/90 text-goldBright font-semibold border-b border-white/10">Admissions</a>
+<a href="admissions.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65 text-goldBright border-b border-white/10">&rsaquo; Admissions Process</a>
+<a href="admission-registration.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Register for Admission</a>
+<a href="book-a-visit.html" class="block py-2.5 pl-4 text-sm text-warmWhite/65  border-b border-white/10">&rsaquo; Book a School Visit</a>
+<a href="news.html" class="block py-3 text-warmWhite/90  border-b border-white/10">News</a>
+<a href="contact.html" class="block py-3 text-warmWhite/90  border-b border-white/10">Contact</a>
     <a href="book-a-visit.html" class="btn-gold btn mt-4 w-full">Book a Visit</a>
   </div>
 </nav>
@@ -123,85 +138,184 @@
     <div class="absolute inset-0 bg-gradient-to-b from-navy/60 to-navy"></div>
     <div class="relative max-w-7xl mx-auto px-5 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20">
       <p class="eyebrow text-goldBright mb-4" data-aos="fade-up">Admissions</p>
-      <h1 class="font-display text-warmWhite text-4xl md:text-5xl max-w-2xl balance" data-aos="fade-up" data-aos-delay="80">Five steps between here and your child's first day.</h1>
-      <p class="text-warmWhite/65 mt-5 max-w-xl leading-relaxed" data-aos="fade-up" data-aos-delay="140">Our admissions process is built to be unhurried &mdash; every family gets a campus visit and a real conversation before any paperwork.</p>
+      <h1 class="font-display text-warmWhite text-4xl md:text-5xl max-w-2xl balance" data-aos="fade-up" data-aos-delay="80">Everything a parent needs, in five parts.</h1>
+      <p class="text-warmWhite/65 mt-5 max-w-xl leading-relaxed" data-aos="fade-up" data-aos-delay="140">Submit an enquiry, see exactly what to bring, check age eligibility, review fees line by line, and get straight answers &mdash; no runaround.</p>
     </div>
   </section>
 
 <main>
-  <section class="max-w-4xl mx-auto px-5 lg:px-8 py-20 md:py-28">
-    <p class="eyebrow text-gold mb-3" data-aos="fade-up">The Process</p>
-    <h2 class="font-display text-3xl md:text-4xl text-navy balance mb-12" data-aos="fade-up">How admission works</h2>
-    <div class="space-y-2">
-        <div class="flex gap-6 items-start" data-aos="fade-up">
-          <span class="font-display text-2xl text-gold w-10 shrink-0">01</span>
-          <div class="flex-1 pb-8 border-b border-navy/10">
-            <h3 class="font-display text-lg text-navy mb-1.5">Submit Enquiry</h3>
-            <p class="text-sm text-ink/60 leading-relaxed">Fill the admission enquiry form below, or call the admissions office directly.</p>
-          </div>
-        </div>
 
-        <div class="flex gap-6 items-start" data-aos="fade-up">
-          <span class="font-display text-2xl text-gold w-10 shrink-0">02</span>
-          <div class="flex-1 pb-8 border-b border-navy/10">
-            <h3 class="font-display text-lg text-navy mb-1.5">Campus Visit</h3>
-            <p class="text-sm text-ink/60 leading-relaxed">Book a school visit to walk the campus and meet a grade-level coordinator.</p>
-          </div>
-        </div>
+  <!-- 1. SUBMIT INQUIRY -->
+  <section id="enquiry" class="max-w-7xl mx-auto px-5 lg:px-8 py-20 md:py-28 scroll-mt-24">
+    <p class="eyebrow text-gold mb-3" data-aos="fade-up">01 &middot; Submit Inquiry</p>
+    <h2 class="font-display text-3xl md:text-4xl text-navy balance mb-4" data-aos="fade-up">Start here &mdash; enquire, or book a campus visit</h2>
+    <p class="text-ink/60 max-w-xl mb-12" data-aos="fade-up">One short form covers both. Pick a date if you'd like to walk the campus in person &mdash; or skip it and we'll just call you back.</p>
 
-        <div class="flex gap-6 items-start" data-aos="fade-up">
-          <span class="font-display text-2xl text-gold w-10 shrink-0">03</span>
-          <div class="flex-1 pb-8 border-b border-navy/10">
-            <h3 class="font-display text-lg text-navy mb-1.5">Assessment</h3>
-            <p class="text-sm text-ink/60 leading-relaxed">An age-appropriate interaction for the child (no written test before Grade 3).</p>
+    <div class="grid lg:grid-cols-[380px_1fr] gap-8 items-start">
+      <!-- Book Appointment calendar -->
+      <div id="visit-calendar-block" data-aos="fade-right">
+        <p class="font-display text-lg text-navy mb-4">Book Appointment for Campus Visit</p>
+        <div class="bg-warmWhite border border-navy/10 rounded-sm p-6" data-calendar data-cal-target="#quick-inquiry-date" data-cal-display="#quick-inquiry-date-display">
+          <div class="flex items-center justify-between mb-5">
+            <button type="button" data-cal-prev class="cal-nav-btn" aria-label="Previous month">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p data-cal-month class="font-display text-sm text-navy tracking-wide"></p>
+            <button type="button" data-cal-next class="cal-nav-btn" aria-label="Next month">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
+          <div class="grid grid-cols-7 gap-1 mb-1"><div class="text-center text-[10px] font-data tracking-wide text-ink/40 py-2">MON</div><div class="text-center text-[10px] font-data tracking-wide text-ink/40 py-2">TUE</div><div class="text-center text-[10px] font-data tracking-wide text-ink/40 py-2">WED</div><div class="text-center text-[10px] font-data tracking-wide text-ink/40 py-2">THU</div><div class="text-center text-[10px] font-data tracking-wide text-ink/40 py-2">FRI</div><div class="text-center text-[10px] font-data tracking-wide text-ink/40 py-2">SAT</div><div class="text-center text-[10px] font-data tracking-wide text-ink/40 py-2">SUN</div></div>
+          <div data-cal-grid class="grid grid-cols-7 gap-1"></div>
+          <p class="text-xs text-ink/50 mt-5 pt-4 border-t border-navy/10">Selected date: <span id="quick-inquiry-date-display" class="text-navy font-medium">None yet &mdash; pick a day above</span></p>
         </div>
+      </div>
 
-        <div class="flex gap-6 items-start" data-aos="fade-up">
-          <span class="font-display text-2xl text-gold w-10 shrink-0">04</span>
-          <div class="flex-1 pb-8 border-b border-navy/10">
-            <h3 class="font-display text-lg text-navy mb-1.5">Document Verification</h3>
-            <p class="text-sm text-ink/60 leading-relaxed">Submit the required documents listed below for review.</p>
+      <!-- Quick Inquiry Form -->
+      <div data-aos="fade-left">
+        <p class="font-display text-lg text-navy mb-4">Quick Inquiry Form</p>
+        <form id="quick-inquiry-form" data-async-form data-endpoint="/api/inquiry" data-success-target="#enquiry-success" data-compose-name="studentFirstName,studentMiddleName,studentSurname:studentName" class="space-y-5 bg-warmWhite border border-navy/10 rounded-sm p-6 md:p-8" novalidate>
+          <input type="hidden" name="studentName">
+          <input type="hidden" id="quick-inquiry-date" name="preferredDate">
+
+          <div>
+            <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">CHILD'S FULL NAME <span class="text-gold">*</span></label>
+            <div class="grid grid-cols-3 gap-3">
+              <input required name="studentFirstName" type="text" placeholder="First Name" class="w-full border border-navy/20 rounded-sm px-3 py-3 text-sm focus:border-gold outline-none transition">
+              <input name="studentMiddleName" type="text" placeholder="Middle" class="w-full border border-navy/20 rounded-sm px-3 py-3 text-sm focus:border-gold outline-none transition">
+              <input required name="studentSurname" type="text" placeholder="Surname" class="w-full border border-navy/20 rounded-sm px-3 py-3 text-sm focus:border-gold outline-none transition">
+            </div>
+            <p class="field-error hidden text-xs text-red-500 mt-1">Please enter the child's first and last name.</p>
           </div>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">MOBILE NUMBER <span class="text-gold">*</span></label>
+              <div class="flex">
+                <span class="flex items-center px-3 border border-r-0 border-navy/20 rounded-l-sm text-sm text-ink/60 bg-ivory font-data">+91</span>
+                <input required name="mobile" type="tel" placeholder="Mobile Number" class="w-full border border-navy/20 rounded-r-sm px-4 py-3 text-sm focus:border-gold outline-none transition">
+              </div>
+              <p class="field-error hidden text-xs text-red-500 mt-1">Please enter a valid 10-digit number.</p>
+            </div>
+            <div>
+              <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">EMAIL <span class="text-gold">*</span></label>
+              <input required name="email" type="email" placeholder="Email" class="w-full border border-navy/20 rounded-sm px-4 py-3 text-sm focus:border-gold outline-none transition">
+              <p class="field-error hidden text-xs text-red-500 mt-1">Please enter a valid email.</p>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">ADMISSION FOR</label>
+              <select name="grade" class="w-full border border-navy/20 rounded-sm px-4 py-3 text-sm focus:border-gold outline-none transition bg-white">
+                <option value="">Select grade</option>
+                <option>Pre-K</option><option>Grade 1&ndash;5</option><option>Grade 6&ndash;8</option><option>Grade 9&ndash;10</option><option>Grade 11&ndash;12</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">HOW DID YOU REACH US</label>
+              <select name="referralSource" class="w-full border border-navy/20 rounded-sm px-4 py-3 text-sm focus:border-gold outline-none transition bg-white">
+                <option value="">Select an option</option>
+                <option>Google Search</option><option>Social Media</option><option>Friend / Family Referral</option><option>Newspaper / Print Ad</option><option>School Event</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div data-intent-toggle data-calendar-block="#visit-calendar-block">
+            <label class="text-xs font-data tracking-wide text-ink/50 mb-2 block">ENQUIRE NOW OR BOOK AN APPOINTMENT</label>
+            <div class="flex gap-6">
+              <label class="flex items-center gap-2 text-sm text-ink/70 cursor-pointer">
+                <input type="radio" name="intent" value="enquire" checked class="accent-[var(--navy)]"> Enquire Now
+              </label>
+              <label class="flex items-center gap-2 text-sm text-ink/70 cursor-pointer">
+                <input type="radio" name="intent" value="appointment" class="accent-[var(--navy)]"> Book an Appointment
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">COMMENT OR MESSAGE</label>
+            <textarea name="message" rows="3" placeholder="Comment or Message" class="w-full border border-navy/20 rounded-sm px-4 py-3 text-sm focus:border-gold outline-none transition"></textarea>
+          </div>
+
+          <button type="submit" class="btn-gold btn w-full">Submit</button>
+        </form>
+
+        <div id="enquiry-success" class="hidden text-center py-10 bg-warmWhite border border-navy/10 rounded-sm" data-aos="zoom-in">
+          <div class="w-16 h-16 rounded-full bg-sage/15 text-sage flex items-center justify-center mx-auto mb-5">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 14.5L11.5 20L22 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-display text-xl text-navy mb-2">Thank you &mdash; we've got it.</h3>
+          <p class="text-sm text-ink/60">An admissions coordinator will reach out within one business day.</p>
         </div>
-
-        <div class="flex gap-6 items-start" data-aos="fade-up">
-          <span class="font-display text-2xl text-gold w-10 shrink-0">05</span>
-          <div class="flex-1 pb-8 ">
-            <h3 class="font-display text-lg text-navy mb-1.5">Offer &amp; Enrolment</h3>
-            <p class="text-sm text-ink/60 leading-relaxed">Accept the offer and complete enrolment within 10 working days.</p>
-          </div>
-        </div></div>
-    <a href="admission-registration.html" class="btn-gold btn mt-10" data-aos="fade-up">Register for Admission</a>
+      </div>
+    </div>
+    <a href="admission-registration.html" class="btn-outline-dark btn mt-12" data-aos="fade-up">Or skip ahead &mdash; Register for Admission &rarr;</a>
   </section>
 
+  <!-- 2. WHAT TO BRING -->
   <section class="bg-ivory py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-2 gap-14">
       <div data-aos="fade-right">
-        <p class="eyebrow text-gold mb-3">Eligibility</p>
-        <h2 class="font-display text-2xl text-navy mb-6 balance">Age criteria by entry grade</h2>
-        <div><div class="flex justify-between py-3 border-b border-navy/10 text-sm"><span class="text-navy font-medium">Pre-K</span><span class="text-ink/55 font-data">Age 3+ as of June 1</span></div><div class="flex justify-between py-3 border-b border-navy/10 text-sm"><span class="text-navy font-medium">Grade 1</span><span class="text-ink/55 font-data">Age 6+ as of June 1</span></div><div class="flex justify-between py-3 border-b border-navy/10 text-sm"><span class="text-navy font-medium">Grade 6</span><span class="text-ink/55 font-data">Age 11+ as of June 1</span></div><div class="flex justify-between py-3 border-b border-navy/10 text-sm"><span class="text-navy font-medium">Grade 9</span><span class="text-ink/55 font-data">Age 14+ as of June 1</span></div></div>
+        <p class="eyebrow text-gold mb-3">02 &middot; What to Bring</p>
+        <h2 class="font-display text-2xl text-navy mb-6 balance">Documents for verification</h2>
+        <ul><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>Birth certificate (original + copy)</li><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>Previous school's transfer certificate</li><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>Last academic year's report card</li><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>4 passport-size photographs</li><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>Address proof (Aadhaar / utility bill)</li><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>Immunisation record (Pre-K &ndash; Grade 2)</li></ul>
       </div>
       <div data-aos="fade-left">
-        <p class="eyebrow text-gold mb-3">Required Documents</p>
-        <h2 class="font-display text-2xl text-navy mb-6 balance">What to bring</h2>
-        <ul><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>Birth certificate (original + copy)</li><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>Previous school's transfer certificate</li><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>Last academic year's report card</li><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>4 passport-size photographs</li><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>Address proof (Aadhaar / utility bill)</li><li class="flex gap-3 text-sm text-ink/65 py-2"><span class="text-gold">&#10003;</span>Immunisation record (Pre-K &ndash; Grade 2)</li></ul>
+        <p class="eyebrow text-gold mb-3">03 &middot; Age Category</p>
+        <h2 class="font-display text-2xl text-navy mb-6 balance">Eligibility by entry grade</h2>
+        <div><div class="flex justify-between py-3 border-b border-navy/10 text-sm"><span class="text-navy font-medium">Pre-K</span><span class="text-ink/55 font-data">Age 3+ as of June 1</span></div><div class="flex justify-between py-3 border-b border-navy/10 text-sm"><span class="text-navy font-medium">Grade 1</span><span class="text-ink/55 font-data">Age 6+ as of June 1</span></div><div class="flex justify-between py-3 border-b border-navy/10 text-sm"><span class="text-navy font-medium">Grade 6</span><span class="text-ink/55 font-data">Age 11+ as of June 1</span></div><div class="flex justify-between py-3 border-b border-navy/10 text-sm"><span class="text-navy font-medium">Grade 9</span><span class="text-ink/55 font-data">Age 14+ as of June 1</span></div></div>
       </div>
     </div>
   </section>
 
+  <!-- 4. INDIVIDUAL FEES -->
   <section id="brochure" class="max-w-7xl mx-auto px-5 lg:px-8 py-20 md:py-28 scroll-mt-24">
-    <p class="eyebrow text-gold mb-3" data-aos="fade-up">Fee Overview</p>
-    <h2 class="font-display text-3xl md:text-4xl text-navy balance mb-4" data-aos="fade-up">Indicative annual fees, 2027&ndash;28</h2>
-    <p class="text-sm text-ink/50 mb-10 max-w-lg" data-aos="fade-up">Fees exclude transport and the annual activity fee. Final figures are confirmed at the campus visit.</p>
-    <div class="bg-ivory rounded-sm p-6 md:p-8 overflow-x-auto" data-aos="fade-up"><table class="w-full text-sm"><thead><tr class="text-left border-b-2 border-navy/20 text-xs font-data tracking-wide text-ink/50"><th class="py-3">GRADE</th><th class="py-3">TUITION</th><th class="py-3">ADMISSION FEE</th></tr></thead><tbody><tr class="border-b border-navy/10"><td class="py-3 text-navy font-medium">Pre-K &ndash; Grade 2</td><td class="py-3 text-ink/60">&#8377;68,000 /yr</td><td class="py-3 text-ink/60">&#8377;15,000</td></tr><tr class="border-b border-navy/10"><td class="py-3 text-navy font-medium">Grade 3 &ndash; 5</td><td class="py-3 text-ink/60">&#8377;78,000 /yr</td><td class="py-3 text-ink/60">&#8377;15,000</td></tr><tr class="border-b border-navy/10"><td class="py-3 text-navy font-medium">Grade 6 &ndash; 8</td><td class="py-3 text-ink/60">&#8377;92,000 /yr</td><td class="py-3 text-ink/60">&#8377;18,000</td></tr><tr class="border-b border-navy/10"><td class="py-3 text-navy font-medium">Grade 9 &ndash; 10</td><td class="py-3 text-ink/60">&#8377;1,04,000 /yr</td><td class="py-3 text-ink/60">&#8377;18,000</td></tr><tr class="border-b border-navy/10"><td class="py-3 text-navy font-medium">Grade 11 &ndash; 12</td><td class="py-3 text-ink/60">&#8377;1,18,000 /yr</td><td class="py-3 text-ink/60">&#8377;20,000</td></tr></tbody></table></div>
+    <p class="eyebrow text-gold mb-3" data-aos="fade-up">04 &middot; Individual Fees</p>
+    <h2 class="font-display text-3xl md:text-4xl text-navy balance mb-4" data-aos="fade-up">Every fee, listed on its own</h2>
+    <p class="text-sm text-ink/50 mb-10 max-w-lg" data-aos="fade-up">Indicative figures for 2027&ndash;28. Final figures are confirmed at the campus visit.</p>
+    <div class="grid lg:grid-cols-2 gap-8">
+      <div class="bg-ivory rounded-sm p-6 md:p-8 overflow-x-auto" data-aos="fade-up">
+        <p class="font-data text-xs tracking-wide text-ink/40 mb-4">TUITION &amp; ADMISSION, BY GRADE</p>
+        <table class="w-full text-sm"><thead><tr class="text-left border-b-2 border-navy/20 text-xs font-data tracking-wide text-ink/50"><th class="py-3">GRADE</th><th class="py-3">TUITION</th><th class="py-3">ADMISSION FEE</th></tr></thead><tbody><tr class="border-b border-navy/10"><td class="py-3 text-navy font-medium">Pre-K &ndash; Grade 2</td><td class="py-3 text-ink/60">&#8377;68,000 /yr</td><td class="py-3 text-ink/60">&#8377;15,000</td></tr><tr class="border-b border-navy/10"><td class="py-3 text-navy font-medium">Grade 3 &ndash; 5</td><td class="py-3 text-ink/60">&#8377;78,000 /yr</td><td class="py-3 text-ink/60">&#8377;15,000</td></tr><tr class="border-b border-navy/10"><td class="py-3 text-navy font-medium">Grade 6 &ndash; 8</td><td class="py-3 text-ink/60">&#8377;92,000 /yr</td><td class="py-3 text-ink/60">&#8377;18,000</td></tr><tr class="border-b border-navy/10"><td class="py-3 text-navy font-medium">Grade 9 &ndash; 10</td><td class="py-3 text-ink/60">&#8377;1,04,000 /yr</td><td class="py-3 text-ink/60">&#8377;18,000</td></tr><tr class="border-b border-navy/10"><td class="py-3 text-navy font-medium">Grade 11 &ndash; 12</td><td class="py-3 text-ink/60">&#8377;1,18,000 /yr</td><td class="py-3 text-ink/60">&#8377;20,000</td></tr></tbody></table>
+      </div>
+      <div class="bg-ivory rounded-sm p-6 md:p-8" data-aos="fade-up">
+        <p class="font-data text-xs tracking-wide text-ink/40 mb-2">OTHER FEES</p>
+        
+        <div class="flex justify-between gap-6 py-4 border-b border-navy/10">
+          <span class="text-navy font-medium text-sm shrink-0">Tuition Fee</span>
+          <span class="text-ink/55 text-sm text-right">Billed annually, varies by grade &mdash; see table above</span>
+        </div>
+
+        <div class="flex justify-between gap-6 py-4 border-b border-navy/10">
+          <span class="text-navy font-medium text-sm shrink-0">Admission Fee</span>
+          <span class="text-ink/55 text-sm text-right">One-time, due at enrolment &mdash; see table above</span>
+        </div>
+
+        <div class="flex justify-between gap-6 py-4 border-b border-navy/10">
+          <span class="text-navy font-medium text-sm shrink-0">Transport Fee</span>
+          <span class="text-ink/55 text-sm text-right">&#8377;12,000&ndash;22,000 /yr, based on distance zone</span>
+        </div>
+
+        <div class="flex justify-between gap-6 py-4 border-b border-navy/10">
+          <span class="text-navy font-medium text-sm shrink-0">Activity Fee</span>
+          <span class="text-ink/55 text-sm text-right">&#8377;6,000 /yr &mdash; covers clubs, sports kit, and field trips</span>
+        </div>
+
+        <div class="flex justify-between gap-6 py-4 border-b border-navy/10">
+          <span class="text-navy font-medium text-sm shrink-0">Examination Fee</span>
+          <span class="text-ink/55 text-sm text-right">&#8377;2,500 /term for Grades 9&ndash;12 (CBSE board registration)</span>
+        </div>
+      </div>
+    </div>
     <a href="assets/brochure.pdf" download class="btn-gold btn mt-8" data-aos="fade-up">Download Full Brochure (PDF)</a>
   </section>
 
+  <!-- 5. FAQS -->
   <section class="bg-ivory py-20 md:py-28">
     <div class="max-w-3xl mx-auto px-5 lg:px-8">
-      <p class="eyebrow text-gold mb-3 text-center" data-aos="fade-up">Questions</p>
-      <h2 class="font-display text-3xl md:text-4xl text-navy balance text-center mb-12" data-aos="fade-up">Frequently asked</h2>
+      <p class="eyebrow text-gold mb-3 text-center" data-aos="fade-up">05 &middot; Frequently Asked Questions</p>
+      <h2 class="font-display text-3xl md:text-4xl text-navy balance text-center mb-12" data-aos="fade-up">Straight answers</h2>
       <div>
         <details class="accordion-item border-b border-navy/10 py-5">
           <summary class="flex items-center justify-between gap-4">
@@ -245,74 +359,45 @@
     </div>
   </section>
 
-  <section id="enquiry" class="max-w-7xl mx-auto px-5 lg:px-8 py-20 md:py-28 scroll-mt-24">
-    <div class="grid md:grid-cols-2 gap-16">
-      <div data-aos="fade-right">
-        <p class="eyebrow text-gold mb-3">Admission Enquiry</p>
-        <h2 class="font-display text-3xl text-navy balance mb-4">Tell us a little about your child</h2>
-        <p class="text-ink/60 leading-relaxed max-w-md">An admissions coordinator will call you within one business day to answer questions and, if you'd like, schedule a visit.</p>
-      </div>
-      <div data-aos="fade-left">
-        <form data-async-form data-endpoint="/api/inquiry" data-success-target="#enquiry-success" class="space-y-5" novalidate>
-          <div>
-            <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">PARENT NAME</label>
-            <input required name="parentName" type="text" class="w-full border border-navy/20 rounded-sm px-4 py-3 text-sm focus:border-gold outline-none transition">
-            <p class="field-error hidden text-xs text-red-500 mt-1">Please enter your name.</p>
-          </div>
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">CHILD'S GRADE OF INTEREST</label>
-              <select required name="grade" class="w-full border border-navy/20 rounded-sm px-4 py-3 text-sm focus:border-gold outline-none transition bg-white">
-                <option value="">Select grade</option>
-                <option>Pre-K</option><option>Grade 1&ndash;5</option><option>Grade 6&ndash;8</option><option>Grade 9&ndash;10</option><option>Grade 11&ndash;12</option>
-              </select>
-              <p class="field-error hidden text-xs text-red-500 mt-1">Please select a grade.</p>
-            </div>
-            <div>
-              <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">MOBILE NUMBER</label>
-              <input required name="mobile" type="tel" class="w-full border border-navy/20 rounded-sm px-4 py-3 text-sm focus:border-gold outline-none transition">
-              <p class="field-error hidden text-xs text-red-500 mt-1">Please enter a valid 10-digit number.</p>
-            </div>
-          </div>
-          <div>
-            <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">EMAIL</label>
-            <input required name="email" type="email" class="w-full border border-navy/20 rounded-sm px-4 py-3 text-sm focus:border-gold outline-none transition">
-            <p class="field-error hidden text-xs text-red-500 mt-1">Please enter a valid email.</p>
-          </div>
-          <div>
-            <label class="text-xs font-data tracking-wide text-ink/50 mb-1.5 block">MESSAGE (OPTIONAL)</label>
-            <textarea name="message" rows="3" class="w-full border border-navy/20 rounded-sm px-4 py-3 text-sm focus:border-gold outline-none transition"></textarea>
-          </div>
-          <button type="submit" class="btn-gold btn w-full">Send Enquiry</button>
-        </form>
-        <div id="enquiry-success" class="hidden text-center py-10" data-aos="zoom-in">
-          <div class="w-16 h-16 rounded-full bg-sage/15 text-sage flex items-center justify-center mx-auto mb-5">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 14.5L11.5 20L22 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="font-display text-xl text-navy mb-2">Thank you &mdash; we've got it.</h3>
-          <p class="text-sm text-ink/60">An admissions coordinator will reach out within one business day.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 
 <div class="fab bottom-24 flex-col items-end gap-3">
-  <a href="book-a-visit.html" class="btn-gold btn shadow-xl !rounded-full !px-5"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6h10M3 6a1 1 0 011-1h8a1 1 0 011 1v7a1 1 0 01-1 1H4a1 1 0 01-1-1V6zM5 3v3M11 3v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Book a Visit</a>
-  <a href="admissions.html#enquiry" class="btn-outline-dark btn bg-warmWhite shadow-xl !rounded-full !px-5">Enquire Now</a>
+  <a href="book-a-visit.html" class="btn-gold btn fab-shadow !rounded-full !px-5"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6h10M3 6a1 1 0 011-1h8a1 1 0 011 1v7a1 1 0 01-1 1H4a1 1 0 01-1-1V6zM5 3v3M11 3v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Book a Visit</a>
+  <a href="admissions.html#enquiry" class="btn-outline-dark btn bg-warmWhite fab-shadow !rounded-full !px-5">Enquire Now</a>
 </div>
-<button id="back-to-top" aria-label="Back to top" class="fab bottom-24 left-6 right-auto opacity-0 pointer-events-none w-11 h-11 !p-0 rounded-full bg-navy text-warmWhite items-center justify-center transition-opacity">
+<button id="back-to-top" aria-label="Back to top" class="fab fab-shadow bottom-24 left-6 right-auto opacity-0 pointer-events-none w-11 h-11 !p-0 rounded-full bg-navy text-warmWhite items-center justify-center transition-opacity">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M8 3L3 8M8 3l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
 
 <div id="lightbox">
-  <button data-lb-close aria-label="Close" class="absolute top-6 right-6 text-warmWhite/80 hover:text-goldBright text-3xl leading-none">&times;</button>
+  <button data-lb-close aria-label="Close" class="absolute top-6 right-6 text-warmWhite/80 hover:text-goldBright text-3xl leading-none z-10">&times;</button>
+  <button data-lb-prev aria-label="Previous image" class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-warmWhite/10 hover:bg-warmWhite/20 flex items-center justify-center text-warmWhite transition z-10">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3L5 9l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <button data-lb-next aria-label="Next image" class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-warmWhite/10 hover:bg-warmWhite/20 flex items-center justify-center text-warmWhite transition z-10">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 3l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
   <figure class="max-w-4xl w-[90%]">
     <img loading="lazy" src="" alt="" class="w-full max-h-[75vh] object-contain rounded-sm">
     <figcaption data-lb-caption class="text-warmWhite/70 text-sm text-center mt-4 font-data tracking-wide"></figcaption>
   </figure>
+</div>
+
+
+<div id="info-modal" class="fixed inset-0 z-[110] hidden items-center justify-center p-4">
+  <div data-modal-backdrop class="absolute inset-0 bg-navyDeep/80"></div>
+  <div class="relative bg-warmWhite rounded-sm max-w-2xl w-full max-h-[85vh] overflow-y-auto">
+    <button data-modal-close aria-label="Close" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-navy/5 hover:bg-navy/10 flex items-center justify-center text-navy text-xl leading-none z-10">&times;</button>
+    <img loading="lazy" data-modal-image src="" alt="" class="w-full aspect-[16/9] object-cover">
+    <div class="p-7 md:p-9">
+      <p data-modal-eyebrow class="eyebrow text-gold mb-2"></p>
+      <h3 data-modal-title class="font-display text-2xl md:text-3xl text-navy mb-4"></h3>
+      <p data-modal-body class="text-sm text-ink/65 leading-relaxed mb-6"></p>
+      <ul data-modal-highlights class="space-y-2"></ul>
+    </div>
+  </div>
 </div>
 
 

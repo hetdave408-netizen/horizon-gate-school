@@ -60,9 +60,9 @@
   function teacherCardHTML(t) {
     const img = t.photoUrl || 'https://picsum.photos/seed/hg-teacher-fallback/360/440';
     return `
-      <div class="text-center">
+      <div class="shrink-0 w-52 snap-start text-center">
         <img src="${esc(img)}" alt="${esc(t.name)}" loading="lazy" class="rounded-sm w-full aspect-[4/5] object-cover mb-4">
-        <p class="font-display text-warmWhite">${esc(t.name)}</p>
+        <p class="font-display text-warmWhite text-sm">${esc(t.name)}</p>
         <p class="text-xs text-goldBright mt-1">${esc(t.role)}</p>
         ${t.qualifications ? `<p class="text-xs text-warmWhite/45 mt-1">${esc(t.qualifications)}</p>` : ''}
       </div>`;
